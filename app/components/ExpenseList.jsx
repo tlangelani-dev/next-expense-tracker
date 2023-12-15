@@ -15,9 +15,9 @@ const ExpenseList = async () => {
         .eq('user_id', user.id)
         .order('created_at', { ascending: true });
     
-        if (error) {
-            console.error('There was a problem fetching expenses');
-        }
+    if (error) {
+        console.error('There was a problem fetching expenses');
+    }
 
     return (
         <div className="container mx-auto p-6">
