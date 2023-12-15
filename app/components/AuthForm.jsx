@@ -12,7 +12,7 @@ const AuthForm = () => {
             view="magic_link"
             showLinks={false}
             providers={[]}
-            redirectTo="http://localhost:3000/auth/callback"
+            redirectTo={`${process.env.APP_DOMAIN}/auth/callback`}
             appearance={{
                 theme: 'dark',
                 button: {
