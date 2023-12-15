@@ -1,6 +1,7 @@
 import { cookies } from 'next/headers';
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
 import { deleteExpense } from '@/app/server-actions/deleteExpense';
+import EditForm from './EditForm';
 
 const ExpenseList = async () => {
     const cookieStore = cookies();
@@ -36,6 +37,7 @@ const ExpenseList = async () => {
                                 Delete
                             </button>
                         </form>
+                        <EditForm expense={expense} />
                     </div>
                 </section>
             ))}
