@@ -5,7 +5,7 @@ import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 
 const AuthForm = () => {
     const supabase = createClientComponentClient();
-    const appDomain = process.env.APP_DOMAIN;
+    const appDomain = process.env.NEXT_PUBLIC_VERCEL_APP_DOMAIN;
     console.log('APP DOMAIN', appDomain);
 
     return (
@@ -14,7 +14,7 @@ const AuthForm = () => {
             view="magic_link"
             showLinks={false}
             providers={[]}
-            redirectTo="https://next-expense-tracker-tlangelani-dev.vercel.app/auth/callback"
+            redirectTo="https://next-expense-tracker-omega.vercel.app/auth/callback"
             appearance={{
                 theme: 'dark',
                 button: {
