@@ -3,10 +3,8 @@ import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
 import { revalidatePath } from 'next/cache';
 import { cookies } from 'next/headers';
 
-export async function addExpense(formData) {
-    const title = formData.get('title');
-    const type = formData.get('type');
-    const amount = formData.get('amount');
+export async function deleteExpense(formData) {
+    const id = formData.get('id');
 
     const cookieStore = cookies();
     const supabase = createServerComponentClient({
@@ -16,21 +14,20 @@ export async function addExpense(formData) {
     const user = session?.user;
 
     if (!user) {
-        console.error('User is not authenticated within addExpense server action');
+        console.error('User is not authenticated within deleteExpense server action');
         return;
     }
 
     const { data, error } = await supabase
         .from('expenses')
-        .insert({
-            title,
-            type,
-            amount,
+        .delete()
+        .match({
+            id,
             user_id: user.id
         });
 
     if (error) {
-        console.error('There was a problem inserting data', error);
+        console.error('There was a problem deleting data', error);
         return;
     }
 
